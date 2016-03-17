@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "校历";
+    Layout = "~/Views/Shared/_WechatJssdkMaste.cshtml";
+}
+
+@section head{
+<script>
+    wx.ready(function () { 
+        wx.hideAllNonBaseMenuItem(); 
+                wx.previewImage({
+                    current: 'http://www.codefirst.top/Models/xl.jpg',
+                    urls: [ 
+                      'http://www.codefirst.top/Models/xl.jpg'
+                    ]
+                });
+
+        });
+</script>
+
+}
+ 

@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SummerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Defineds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Back" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Ask" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="subtime" Type="datetime" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FontAwesome">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="subtime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StudentGrade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Term" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Credit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quality" Type="nvarchar" MaxLength="50" />
+          <Property Name="CheckMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrimiGrade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValidGrade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StudentGrades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserInfoId" Type="int" Nullable="false" />
+          <Property Name="Term" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Credit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quality" Type="nvarchar" MaxLength="50" />
+          <Property Name="CheckMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrimiGrade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValidGrade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StudentImageTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserInfoId" Type="int" Nullable="false" />
+          <Property Name="Term" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClassImage" Type="image" Nullable="false" />
+          <Property Name="ExamImage" Type="image" Nullable="false" />
+          <Property Name="Mark" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StudentInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Terms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Term" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Timeline">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="contant" Type="nvarchar(max)" />
+          <Property Name="contype" Type="nvarchar(max)" />
+          <Property Name="condate" Type="nvarchar(max)" />
+          <Property Name="confa" Type="nvarchar(max)" />
+          <Property Name="concolor" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserRoleId" Type="int" Nullable="false" />
+          <Property Name="UserStateId" Type="int" Nullable="false" />
+          <Property Name="Money" Type="money" />
+        </EntityType>
+        <Association Name="FK__StudentGr__UserI__3D2915A8">
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="1" />
+          <End Role="StudentGrades" Type="Self.StudentGrades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentGrades">
+              <PropertyRef Name="UserInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentIm__UserI__41EDCAC5">
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="1" />
+          <End Role="StudentImageTable" Type="Self.StudentImageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentImageTable">
+              <PropertyRef Name="UserInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SummerModelStoreContainer">
+          <EntitySet Name="Defineds" EntityType="Self.Defineds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FontAwesome" EntityType="Self.FontAwesome" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentGrade" EntityType="Self.StudentGrade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentGrades" EntityType="Self.StudentGrades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentImageTable" EntityType="Self.StudentImageTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Terms" EntityType="Self.Terms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timeline" EntityType="Self.Timeline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__StudentGr__UserI__3D2915A8" Association="Self.FK__StudentGr__UserI__3D2915A8">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentGrades" EntitySet="StudentGrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentIm__UserI__41EDCAC5" Association="Self.FK__StudentIm__UserI__41EDCAC5">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentImageTable" EntitySet="StudentImageTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SummerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserStateId" Type="Int32" Nullable="false" />
+          <Property Name="Money" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="SummerModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Settings" EntityType="SummerModel.Settings" />
+          <EntitySet Name="Timeline" EntityType="SummerModel.Timeline" />
+          <EntitySet Name="FontAwesome" EntityType="SummerModel.FontAwesome" />
+          <EntitySet Name="StudentGrade" EntityType="SummerModel.StudentGrade" />
+          <EntitySet Name="Terms" EntityType="SummerModel.Terms" />
+          <EntitySet Name="Defineds" EntityType="SummerModel.Defineds" />
+          <EntitySet Name="StudentGrades" EntityType="SummerModel.StudentGrades" />
+          <EntitySet Name="StudentImageTable" EntityType="SummerModel.StudentImageTable" />
+          <EntitySet Name="StudentInfo" EntityType="SummerModel.StudentInfo" />
+          <AssociationSet Name="FK__StudentGr__UserI__3D2915A8" Association="SummerModel.FK__StudentGr__UserI__3D2915A8">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentGrades" EntitySet="StudentGrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentIm__UserI__41EDCAC5" Association="SummerModel.FK__StudentIm__UserI__41EDCAC5">
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+            <End Role="StudentImageTable" EntitySet="StudentImageTable" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="subtime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Timeline">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contant" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="condate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="confa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="concolor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FontAwesome">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StudentGrade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Term" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Credit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CheckMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimiGrade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValidGrade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Terms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Term" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Defineds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Back" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ask" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="subtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StudentGrades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Term" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Credit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CheckMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimiGrade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ValidGrade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentInfo" Relationship="SummerModel.FK__StudentGr__UserI__3D2915A8" FromRole="StudentGrades" ToRole="StudentInfo" />
+        </EntityType>
+        <EntityType Name="StudentImageTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Term" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassImage" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExamImage" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Mark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentInfo" Relationship="SummerModel.FK__StudentIm__UserI__41EDCAC5" FromRole="StudentImageTable" ToRole="StudentInfo" />
+        </EntityType>
+        <EntityType Name="StudentInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentGrades" Relationship="SummerModel.FK__StudentGr__UserI__3D2915A8" FromRole="StudentInfo" ToRole="StudentGrades" />
+          <NavigationProperty Name="StudentImageTable" Relationship="SummerModel.FK__StudentIm__UserI__41EDCAC5" FromRole="StudentInfo" ToRole="StudentImageTable" />
+        </EntityType>
+        <Association Name="FK__StudentGr__UserI__3D2915A8">
+          <End Type="SummerModel.StudentInfo" Role="StudentInfo" Multiplicity="1" />
+          <End Type="SummerModel.StudentGrades" Role="StudentGrades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentGrades">
+              <PropertyRef Name="UserInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentIm__UserI__41EDCAC5">
+          <End Type="SummerModel.StudentInfo" Role="StudentInfo" Multiplicity="1" />
+          <End Type="SummerModel.StudentImageTable" Role="StudentImageTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentImageTable">
+              <PropertyRef Name="UserInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SummerModelStoreContainer" CdmEntityContainer="SummerModelContainer">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SummerModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserStateId" ColumnName="UserStateId" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="SummerModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="subtime" ColumnName="subtime" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timeline">
+            <EntityTypeMapping TypeName="SummerModel.Timeline">
+              <MappingFragment StoreEntitySet="Timeline">
+                <ScalarProperty Name="concolor" ColumnName="concolor" />
+                <ScalarProperty Name="confa" ColumnName="confa" />
+                <ScalarProperty Name="condate" ColumnName="condate" />
+                <ScalarProperty Name="contype" ColumnName="contype" />
+                <ScalarProperty Name="contant" ColumnName="contant" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FontAwesome">
+            <EntityTypeMapping TypeName="SummerModel.FontAwesome">
+              <MappingFragment StoreEntitySet="FontAwesome">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentGrade">
+            <EntityTypeMapping TypeName="SummerModel.StudentGrade">
+              <MappingFragment StoreEntitySet="StudentGrade">
+                <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="ValidGrade" ColumnName="ValidGrade" />
+                <ScalarProperty Name="PrimiGrade" ColumnName="PrimiGrade" />
+                <ScalarProperty Name="CheckMode" ColumnName="CheckMode" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Terms">
+            <EntityTypeMapping TypeName="SummerModel.Terms">
+              <MappingFragment StoreEntitySet="Terms">
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defineds">
+            <EntityTypeMapping TypeName="SummerModel.Defineds">
+              <MappingFragment StoreEntitySet="Defineds">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="subtime" ColumnName="subtime" />
+                <ScalarProperty Name="Ask" ColumnName="Ask" />
+                <ScalarProperty Name="Back" ColumnName="Back" />
+                <ScalarProperty Name="FromUserName" ColumnName="FromUserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentGrades">
+            <EntityTypeMapping TypeName="SummerModel.StudentGrades">
+              <MappingFragment StoreEntitySet="StudentGrades">
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="ValidGrade" ColumnName="ValidGrade" />
+                <ScalarProperty Name="PrimiGrade" ColumnName="PrimiGrade" />
+                <ScalarProperty Name="CheckMode" ColumnName="CheckMode" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentImageTable">
+            <EntityTypeMapping TypeName="SummerModel.StudentImageTable">
+              <MappingFragment StoreEntitySet="StudentImageTable">
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="ExamImage" ColumnName="ExamImage" />
+                <ScalarProperty Name="ClassImage" ColumnName="ClassImage" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentInfo">
+            <EntityTypeMapping TypeName="SummerModel.StudentInfo">
+              <MappingFragment StoreEntitySet="StudentInfo">
+                <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

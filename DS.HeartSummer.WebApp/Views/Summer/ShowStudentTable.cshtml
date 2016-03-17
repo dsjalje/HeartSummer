@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "ShowStudentTable";
+    Layout = "~/Views/Shared/_WechatJssdkMaste.cshtml";
+}
+ 
+@section head{
+    <script>
+    wx.ready(function () {
+        wx.hideAllNonBaseMenuItem();
+                wx.previewImage({
+                    current: 'http://www.codefirst.top/summer/getstudentclasstable?userinfoid=149&term=20151',
+                    urls: [
+                      'http://www.codefirst.top/summer/getstudentclasstable?userinfoid=149&term=20151'
+                    ]
+                });
+
+        });
+    </script>
+
+}

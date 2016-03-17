@@ -1,0 +1,36 @@
+﻿@using DS.HeartSummer.WebApp.Models.Wechat;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script>
+        @{
+            WeChatHelper wh = new WeChatHelper();
+
+            WeChatJssdk wj = wh.GetJssdk(Request.Url.AbsoluteUri);
+            }
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '@wj.AppId', // 必填，公众号的唯一标识
+            timestamp: @wj.Timestamp, // 必填，生成签名的时间戳
+            nonceStr: '@wj.Noncestr', // 必填，生成签名的随机串
+            signature: '@wj.Signature',// 必填，签名，见附录1
+            jsApiList:[
+        'checkJsApi',
+       'previewImage',
+       'hideAllNonBaseMenuItem',
+       'closeWindow',
+       'openLocation'
+
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+    </script>
+
+    @RenderSection("head", required: false)
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

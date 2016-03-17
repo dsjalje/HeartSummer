@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "注册";
+    Layout = "~/Views/Shared/_LoginMaster.cshtml";
+}
+<script>
+
+</script>
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name">He</h1>
+        </div>
+        <h3>目前处于内测时段、禁止注册。</h3>
+        <p>创建一个H+新账户</p>
+        @using (Ajax.BeginForm("Register", "Users", new AjaxOptions { OnSuccess = "success", OnFailure = "" }))
+        {
+            <div class="form-group">
+                <input type="text" class="form-control" name="LoginId" placeholder="请输入用户名" required="">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="Mail" placeholder="请输入邮箱" required="">
+            </div>
+            <div class="form-group">
+                <input type="password" name="LoginPwd" class="form-control" placeholder="请输入密码" required="">
+            </div>
+            @*<div class="form-group">
+                    <input type="password" name="ReLoginPwd" class="form-control" placeholder="请再次输入密码" required="">
+                </div>*@
+
+            <div class="form-group">
+                <img src="ValidateCode" onclick="$(this).attr('src', 'ValidateCode?v=' + Math.random())" style="position:absolute; padding-left:32px; padding-top:6px;cursor:pointer;" alt="Alternate Text" />
+                <input type="text" class="form-control" name="validateCode" style="padding-right:130px;" placeholder="验证码" required="">
+            </div>
+            <div class="form-group text-left">
+                <div class="checkbox i-checks">
+                    <label class="no-padding">
+                        <input type="checkbox" id="xyCheck"><i></i> 我同意注册协议
+                    </label>
+                </div>
+            </div>
+            <button type="submit" onclick="return $('#xyCheck').is(':checked')" class="btn btn-primary block full-width m-b" disabled="disabled">注 册</button>
+            <p class="text-muted text-center">
+                <small>已经有账户了？</small><a href="login">点此登录</a>
+            </p> }
+
+        <input type="hidden" id="msg" class="demo3" name="name" value="tanchuang" />
+    </div>
+</div>
+
+@section script{
+    <script>
+        function success(e) {
+            if (e == "0") {
+                parent.layer.msg('验证码错误！');
+            }
+            else if (e == "1") {
+                swal({
+                    title: "恭喜您 , 注册成功啦！",
+                    text: "点击 OK , 跳转至首页。",
+                    type: "success",
+                }, function () {
+                    window.location.href = "/";
+                });
+            } else if (e == "-1") {
+                parent.layer.msg('用户名重复!请重试！');
+            }
+        }
+        function cutlin() {
+            parent.layer.msg('服务器访问失败！请稍后再试...');
+        }
+    </script>
+    <script>
+        $(document).ready(function () { $(".i-checks").iCheck({ checkboxClass: "icheckbox_square-green", radioClass: "iradio_square-green", }) });
+    </script>
+}

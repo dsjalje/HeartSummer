@@ -1,0 +1,98 @@
+﻿@using DS.HeartSummer.WebApp.Models.Wechat;
+@{
+    ViewBag.Title = "LoginJxxy";
+    Layout = "~/Views/Shared/_LoginMaster.cshtml";
+}
+@section head{
+
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <link href="~/Content/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <script>
+        @{
+            WeChatHelper wh = new WeChatHelper();
+
+            WeChatJssdk wj = wh.GetJssdk(Request.Url.AbsoluteUri);
+            }
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '@wj.AppId', // 必填，公众号的唯一标识
+            timestamp: @wj.Timestamp, // 必填，生成签名的时间戳
+            nonceStr: '@wj.Noncestr', // 必填，生成签名的随机串
+            signature: '@wj.Signature',// 必填，签名，见附录1
+            jsApiList:[
+        'checkJsApi',
+       'previewImage',
+       'hideAllNonBaseMenuItem',
+       'closeWindow'
+
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+        wx.ready(function () {
+            wx.hideAllNonBaseMenuItem();
+        })
+    </script>
+}
+
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+            <h2 class="author-name">教务查询</h2>
+        </div>
+        <br />
+        @using (Ajax.BeginForm("LoginJxxy", "Summer", new AjaxOptions { OnSuccess = "success", OnBegin = "Begin" }))
+        {
+            <div class="form-group">
+                <input type="text" class="form-control" name="LoginId" placeholder="学号" required="">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="LoginPwd" placeholder="密码" required="">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="ValiCode" placeholder="验证码" required="">
+            </div>
+
+            <img src="LoginJxxyGetValiDate" alt="Alternate Text" onclick="$(this).attr('src', 'LoginJxxyGetValiDate?v=' + Math.random())" style="cursor:pointer;" />
+            <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+        }
+    </div>
+</div>
+<a href="#" style="display:none" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal1" id="showload">显示载入层</a>
+<div class="modal inmodal in" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;">
+    <div class="modal-dialog cm-invalidchar" style="padding-top:300px">
+
+        <div class="sk-spinner sk-spinner-double-bounce">
+        </div>
+
+    </div>
+</div>
+
+@section script{
+    <script>
+        function success(e){
+            if (e == "0") {
+                $("#showload").click(); 
+                swal({
+                    title:"导入成功！",
+                    text:"可在微信中回复学号或者姓名进行查询！", 
+                },function(){ 
+                    wx.closeWindow(); 
+                }); 
+            }
+            else {
+                swal(e);
+                $("#showload").click();
+            }
+        }
+        function Begin() {
+            $("#showload").click(); 
+            swal({
+                title:"成功进行导入！", 
+                text:"可稍后在微信中回复成绩#学号或者成绩#姓名进行查询！（记得要加上成绩#哦）", 
+            },function(){ 
+                wx.closeWindow(); 
+            }); 
+        }  
+    </script>
+}

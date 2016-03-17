@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "WeChat_CustomBasic";
+    Layout = "~/Views/Shared/_HomeMaster.cshtml";
+}
+
+@section head{
+    
+    
+<link href="~/Content/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    }
+
+<div class="row  white-bg dashboard-header">
+    <div class="col-sm-12">
+        <div class="text-box" style="font-size:14px">
+            <h3>订阅信息</h3>
+            <p class="small"><i class="fa fa-refresh"></i> 当用户订阅了本公众号，首先回复的信息 </p>
+            <div class="input-group col-sm-6">
+                <input type="text" placeholder="帮助信息" value="@ViewData["event_subscribe"]" id="event_subscribe" class="input input-sm form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-sm btn-white" id="editsub"> <i class="fa fa-plus"></i> 修改</button>
+                </span>
+            </div>
+            <br />
+            <br />
+
+            <h3>帮助信息</h3>
+            <p class="small"><i class="fa fa-refresh"></i> 出现在微信的帮助 Click 事件返回的 help 信息    </p>
+            <div class="input-group col-sm-6">
+                <input type="text" placeholder="帮助信息" value="@ViewData["event_click_help"]" id="event_click_help" class="input input-sm form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-sm btn-white" id="editHelp"> <i class="fa fa-plus"></i> 修改</button>
+                </span>
+            </div>
+            <br />
+            <br />
+
+            <h3>默认查询课表的日期</h3>
+            <p class="small"><i class="fa fa-refresh"></i> 用户默认查询的课表所在的日期和用户默认导入的课表日期 例如：20150（2015年-第一学期）</p>
+            <div class="input-group col-sm-6">
+                <input type="text" placeholder="今天没吃药，感觉自己萌萌哒！" id="default_class_term" value="@ViewData["default_class_term"]" class="input input-sm form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-sm btn-white" id="editclass"> <i class="fa fa-plus"></i> 修改</button>
+                </span>
+            </div><br />
+            <br />
+
+
+            <h3>默认查询成绩的日期</h3>
+            <p class="small"><i class="fa fa-refresh"></i> 用户默认查询的成绩所在的日期 例如：20150（2015年-第一学期）</p>
+            <div class="input-group col-sm-6">
+                <input type="text" placeholder="" value="@ViewData["default_grade_term"]" id="default_grade_term" class="input input-sm form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-sm btn-white" id="edditgrade"> <i class="fa fa-plus"></i> 修改</button>
+                </span>
+            </div> 
+            <br />
+        </div>
+    </div>
+</div>
+
+
+@section script{
+<script src="~/Content/js/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#wechat").click();
+            $("#wechat_basic").attr("class", "active");
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+            $("#editHelp").click(function () {
+               
+                $.post("WeChat_CustomBasic", "event_click_help=" + $("#event_click_help").val(), function () {
+                    toastr.success("修改成功啦！");
+                });  
+            })
+
+            $("#editclass").click(function () {
+                $.post("WeChat_CustomBasic", "default_class_term=" + $("#default_class_term").val(), function () {
+                    toastr.success("修改成功啦！");
+                }); 
+            })
+            $("#edditgrade").click(function () {
+                $.post("WeChat_CustomBasic", "default_grade_term=" + $("#default_grade_term").val(), function () {
+                    toastr.success("修改成功啦！");
+                }); 
+            })
+
+
+            $("#editsub").click(function () {
+                $.post("WeChat_CustomBasic", "event_subscribe=" + $("#event_subscribe").val(), function () {
+                    toastr.success("修改成功啦！");
+                });
+            }) 
+        })
+
+        
+
+    </script>
+
+}

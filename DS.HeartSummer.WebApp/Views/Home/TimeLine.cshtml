@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "TimeLine";
+    Layout = "~/Views/Shared/_HomeMaster.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="wrapper wrapper-content">
+            <div class="row animated fadeInRight">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="text-center float-e-margins p-md"> 
+                            @*<a href="#" class="btn btn-xs btn-primary" id="lightVersion">浅色</a>*@
+                            <a href="#" class="btn btn-xs btn-primary" id="leftVersion">布局切换</a> 
+                            <a href="#" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal" id="addTimeLine">添加时间线</a>
+
+                            <a href="#" style="display:none" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#myModal1" id="showload">显示载入层</a>
+                        </div>
+                        <div class="ibox-content" id="ibox-content">
+                            <div id="vertical-timeline" class="vertical-container dark-timeline">
+
+
+
+                                @{
+                                    var tl = ViewData["tl"] as List<DS.HeartSummer.Model.Timeline>;
+                                }
+                                @foreach (DS.HeartSummer.Model.Timeline t in tl)
+                                {
+                                    <div class="vertical-timeline-block">
+                                        <div class="vertical-timeline-icon @t.concolor">
+                                            <i class="@t.confa"></i>
+                                        </div>
+                                        <div class="vertical-timeline-content">
+                                            <h2>@t.title</h2>
+                                            <p>
+                                                @t.contant
+                                            </p>
+                                            <span class="vertical-date">
+                                                @t.contype <br>
+                                                <small>@t.condate</small>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+<div class="modal inmodal in" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">关闭</span>
+                </button>
+                <i class="fa fa-laptop modal-icon"></i>
+                <h4 class="modal-title">记录 时间</h4>
+                <small class="font-bold">
+                    不经历一番路程，怎知你态度虔诚。
+                </small>
+            </div><small class="font-bold">
+
+                @using (Ajax.BeginForm("AddTimeLine", "Home", new AjaxOptions { OnSuccess = "success",OnBegin="begin"  }))
+                {
+                    <div class="modal-body"> 
+                        <div class="form-group"><label>标题</label> <input type="text" required="" aria-required="true" aria-describedby="cname-error" aria-invalid="true" minlength="2" name="title" placeholder="请输入您的Title" class="form-control"></div>
+                        <div class="form-group"><label>类型</label> <input type="text" required="" aria-required="true" aria-describedby="cname-error" aria-invalid="true" minlength="2" name="contype" value="微信开发" placeholder="请输入您的类型" class="form-control"></div>
+                        <div class="form-group"><label>内容</label><textarea placeholder="请输入您的内容" required="" aria-required="true" aria-describedby="cname-error" aria-invalid="true" minlength="2" name="contant" rows="5" class="form-control"></textarea></div>
+                    </div> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                }
+            </small>
+        </div><small class="font-bold">
+        </small>
+    </div><small class="font-bold">
+    </small>
+</div>
+
+
+
+<div class="modal inmodal in" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;">
+    <div class="modal-dialog cm-invalidchar" style="padding-top:300px"> 
+    
+        <div class="sk-spinner sk-spinner-double-bounce">
+            <div class="sk-double-bounce1"></div>
+            <div class="sk-double-bounce2"></div>
+        </div>
+    
+    </div> 
+</div>
+
+
+@section script{
+
+    <script>
+        $(document).ready(function () { $("#lightVersion").click(function (event) { event.preventDefault(); $("#ibox-content").removeClass("ibox-content"); $("#vertical-timeline").removeClass("dark-timeline"); $("#vertical-timeline").addClass("light-timeline") }); $("#darkVersion").click(function (event) { event.preventDefault(); $("#ibox-content").addClass("ibox-content"); $("#vertical-timeline").removeClass("light-timeline"); $("#vertical-timeline").addClass("dark-timeline") }); $("#leftVersion").click(function (event) { event.preventDefault(); $("#vertical-timeline").toggleClass("center-orientation") }) });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#timeline").attr("class", "active");
+        });
+    </script>
+    <script>
+        function success(e) {
+            if (e=="0") {
+                location.reload()
+            }
+            else {
+                parent.layer.msg(e);
+            }
+
+        }
+        function begin() {
+            $("#myModal").attr("style", "display:none;");  
+            $("#showload").click();
+        }
+
+    </script>
+}

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "WeChat_CustomToken";
+    Layout = "~/Views/Shared/_HomeMaster.cshtml";
+}
+<div class="row  white-bg dashboard-header">
+    <div class="col-sm-12">
+        <div class="text-box" style="font-size:14px">
+            <h3>修改Token(令牌)</h3>
+            <p class="small"><i class="fa fa-refresh"></i> 与微信直接的传输密匙!</p>
+            <div class="input-group col-sm-6">
+                <input type="text" placeholder="帮助信息" value="@ViewData["token"]" id="token" class="input input-sm form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-sm btn-white" id="edittoken" disabled="disabled"> <i class="fa fa-plus"></i> 修改</button>
+                </span>
+            </div>
+            <br />
+            <br />
+
+        </div>
+    </div>
+</div>
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#wechat").click();
+            $("#wechat_token").attr("class", "active");
+        });
+    </script>
+}

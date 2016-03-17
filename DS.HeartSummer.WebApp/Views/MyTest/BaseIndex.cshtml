@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "BaseIndex";
+    Layout = "~/Views/Shared/_WechatJssdkMaste.cshtml";
+}
+
+@{
+    <script>
+        wx.ready(function () {
+            // 7.1 查看地理位置
+            wx.openLocation({
+                latitude: 26.068701,
+                longitude: 119.194325,
+                name: '福建江夏学院',
+                address: '福州市大学溪源宫路2号',
+                scale: 14,
+                infoUrl: 'http://weixin.qq.com'
+            });
+        })
+
+    </script>
+}

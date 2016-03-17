@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_HomeMaster.cshtml";
+}
+
+<div class="row  white-bg dashboard-header">
+    开发中！暂不可用！
+    @*<div class="row show-grid">
+
+        @{
+            var menus = ViewData["menus"] as List<DS.HeartSummer.Model.CustomMenu>;
+        }
+        @if (menus != null)
+        {
+            <div class="col-md-9">
+                第一个一级： <input type="text" name="name" value="@menus[0].Name" />
+
+            </div>
+            <div class="col-md-9">
+                第二个一级： <input type="text" name="name" value="@menus[1].Name " />
+                @for (int i = 0; i < menus[1].Sub_button.Count; i++)
+                {
+                    <div class="row show-grid">
+                        <div class="col-md-6">
+                            第二级： <input type="text" name="name" value="@menus[1].Sub_button[i].Name" />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-9">
+                第三个一级： <input type="text" name="name" value="@menus[2].Name" />
+
+            </div>
+        } 
+    </div>*@
+
+</div>
+
+
+
+@section script{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#wechat").click();
+            $("#wechat_menus").attr("class", "active");
+        });
+    </script>
+}

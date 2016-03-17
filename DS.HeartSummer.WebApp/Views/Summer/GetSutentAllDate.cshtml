@@ -1,0 +1,61 @@
+﻿@using DS.HeartSummer.WebApp.Models.Wechat;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html> 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>成绩信息</title>  
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="~/Content/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="~/Content/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Content/css/animate.min.css" rel="stylesheet">
+    <link href="~/Content/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row"> 
+            @{ 
+                List<ShowGrade> sgList = ViewData["showData"] as List<ShowGrade>;
+            }
+            @foreach (ShowGrade sg in sgList)
+            {
+                <div class="col-sm-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>@sg.Term</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>科目</th>
+                                        <th>学分</th>
+                                        <th>成绩</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (GradeDate gd in sg.GradeDates)
+                                    {
+                                        <tr>
+
+                                            <td>@gd.GradeName</td>
+                                            <td>@gd.Credit</td>
+                                            <td>@gd.Grade</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+    <script src="~/Content/js/jquery.min.js?v=2.1.4"></script>
+    <script src="~/Content/js/bootstrap.min.js?v=3.3.6"></script> 
+</body> 
+</html>
